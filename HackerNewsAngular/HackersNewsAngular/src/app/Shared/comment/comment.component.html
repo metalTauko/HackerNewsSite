@@ -12,7 +12,7 @@
 <ng-template #commentTemplate let-comments let-commentview="false">
   <div *ngIf="comments.kids > 0" class="subComment">
 
-    View Comments <i class="fas fa-comments" (click)="commentview= commentview == true ? false : true"></i>
+    View Comments <i class="fas fa-comments clickable" (click)="commentview= commentview == true ? false : true"></i>
 
     <ng-container *ngIf="commentview">
       <div *ngFor="let id of comments.kids">
