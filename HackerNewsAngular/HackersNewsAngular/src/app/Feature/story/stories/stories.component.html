@@ -1,0 +1,28 @@
+<app-search-box (search)="search($event)"></app-search-box>
+
+<ng-container *ngFor="let story of stories">
+  
+    <app-title [text]="story.title" [url]="story.url"></app-title>
+    <div>
+      Author : {{story.by}}
+    </div>
+
+    <ng-container 
+   *ngTemplateOutlet="comment; context: {$implicit: story}">
+</ng-container>
+    
+</ng-container>
+
+<ng-template #comment let-story let-commentview="false" >
+    <div *ngIf="story.descendants > 0">
+      
+        View Comments <i class="fas fa-comments" (click)="commentview= commentview == true ? false : true"></i>
+  
+        <ng-container *ngIf="commentview">
+          <div *ngFor="let id of story.kids">
+            <app-comment [commentId]="id"></app-comment>
+          </div>
+        </ng-container>
+      </div>
+</ng-template>
+
