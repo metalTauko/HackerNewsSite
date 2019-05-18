@@ -1,0 +1,18 @@
+$commentCountSize:10px;
+$commentTextSize: $commentCountSize + 2px;
+
+
+.comment{
+    padding-left: 20px;
+    border-left: 1px solid;
+    margin: 5px;
+}
+.commentCount{
+    font-size: $commentCountSize;
+    margin: 0 5px;
+}
+
+.commentText{
+    font-size: $commentTextSize;
+    margin-right: 5px;
+}

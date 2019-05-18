@@ -4,6 +4,8 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { CommentComponent } from './comment/comment.component';
 import { TitleComponent } from './title/title.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
+import { CommentListComponent } from './comment-list/comment-list.component';
 
 
 
@@ -11,7 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     SearchBoxComponent,
     CommentComponent,
-    TitleComponent
+    TitleComponent,
+    LoadingIndicatorComponent,
+    CommentListComponent
   ],
   imports: [
     CommonModule,
@@ -19,8 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   exports:[
     SearchBoxComponent,
-    CommentComponent,
-    TitleComponent
+    TitleComponent,
+    LoadingIndicatorComponent,
+    CommentListComponent
   ],
   providers:[]
 })

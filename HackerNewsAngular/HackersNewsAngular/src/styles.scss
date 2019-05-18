@@ -3,3 +3,17 @@
 .clickable{
     cursor: pointer;
 }
+
+
+.row{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.col{
+    align-self: center;
+}
+
+* {
+    color: #3a3939;
+}

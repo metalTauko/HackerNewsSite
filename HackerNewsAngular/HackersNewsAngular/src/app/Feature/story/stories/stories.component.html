@@ -1,28 +1,20 @@
 <app-search-box (search)="search($event)"></app-search-box>
-
+<div>
+  <app-loading-indicator [loading]="loadingInd"></app-loading-indicator>
+</div>
 <ng-container *ngFor="let story of display">
-  
-    <app-title [text]="story.title" [url]="story.url"></app-title>
-    <div>
-      Author : {{story.by}}
-    </div>
 
-    <ng-container 
-   *ngTemplateOutlet="comment; context: {$implicit: story}">
+  <app-title [text]="story.title" [url]="story.url"></app-title>
+ 
+  <div>
+    Posted On: {{story.time * 1000 | date: "medium"}}
+  </div>
+  <div>
+     By: {{story.by}}
+  </div>
+
+  <div *ngIf="story.descendants > 0">
+    <app-comment-list [commentIds]="story.kids"></app-comment-list>
+  </div>
+
 </ng-container>
-    
-</ng-container>
-
-<ng-template #comment let-story let-commentview="false" >
-    <div *ngIf="story.descendants > 0">
-      
-        View Comments <i class="fas fa-comments clickable" (click)="commentview= commentview == true ? false : true"></i>
-  
-        <ng-container *ngIf="commentview">
-          <div *ngFor="let id of story.kids">
-            <app-comment [commentId]="id"></app-comment>
-          </div>
-        </ng-container>
-      </div>
-</ng-template>
-

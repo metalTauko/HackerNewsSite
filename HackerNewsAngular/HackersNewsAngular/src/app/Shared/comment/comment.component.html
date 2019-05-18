@@ -1,23 +1,6 @@
 <ng-container *ngIf="comment">
-  <div class="comment">
   <p [innerHTML]="comment?.text"></p>
-  <div>By : {{comment?.by}}</div>
-  <ng-container *ngTemplateOutlet="commentTemplate; context: {$implicit: comment}"></ng-container>
-</div>
+  <div>By: {{comment?.by}}</div>
+  <app-comment-list [commentIds]="comment.kids"></app-comment-list>
+  <div>----</div>
 </ng-container>
-
-
-
-
-<ng-template #commentTemplate let-comments let-commentview="false">
-  <div *ngIf="comments.kids > 0" class="subComment">
-
-    View Comments <i class="fas fa-comments clickable" (click)="commentview= commentview == true ? false : true"></i>
-
-    <ng-container *ngIf="commentview">
-      <div *ngFor="let id of comments.kids">
-        <app-comment [commentId]="id"></app-comment>
-      </div>
-    </ng-container>
-  </div>
-</ng-template>

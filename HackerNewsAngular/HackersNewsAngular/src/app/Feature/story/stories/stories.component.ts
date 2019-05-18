@@ -14,13 +14,15 @@ export class StoriesComponent implements OnInit {
   stories = new Array<Story>();
 
   display = new Array<Story>();
-
-  comments = false;
-
+  
+  loadingInd = false;
+ 
   ngOnInit() {
+    this.loadingInd = true;
     this.storyService.getTopStories(20).subscribe(data=>{
       this.stories = data;
       this.display = data;
+      this.loadingInd = false;
     })
   }
 

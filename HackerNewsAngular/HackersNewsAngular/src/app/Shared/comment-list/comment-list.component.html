@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col">
+    <app-loading-indicator [loading]="loadingInd"></app-loading-indicator>
+  </div>
+  <div *ngIf="commentIds?.length > 0" class="col">
+    <div>
+      <span class="commentText">View Comments</span><i class="fas fa-comments clickable" (click)="commentView = commentView == true ? false : true;"></i>
+      <span class="commentCount">
+        <strong>{{commentIds.length}}</strong></span>
+    </div>
+
+    <ng-container *ngIf="commentView">
+      <div *ngFor="let id of commentIds" class="comment">
+        <app-comment [commentId]="id" (loadingInd)="loading($event)"></app-comment>
+      </div>
+    </ng-container>
+  </div>
+</div>
