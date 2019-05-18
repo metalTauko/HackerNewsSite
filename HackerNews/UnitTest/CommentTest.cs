@@ -5,21 +5,20 @@ using HackerNews.DataAccess.DataModels;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace UnitTest
 {
-  
-    public class StoryServiceTest
+    class CommentTest
     {
-        IStoryService storyService;
-
-        int itemId = 8863;
+        ICommentService commentService;
+        int itemId = 9224;
 
         [SetUp]
         public void Setup()
         {
+            
+
             AppConstants appConstants = new AppConstants()
             {
                 Setting = new Dictionary<string, string>()
@@ -29,23 +28,16 @@ namespace UnitTest
                 }
             };
 
-            storyService = new StoryService(new RepositoryBank(appConstants));
+            commentService = new CommentService(new RepositoryBank(appConstants));
         }
-              
+        
         [Test]
-        public void TypeShouldShowStory()
+        public void TypeShouldShowComment()
         {
-           StoryDto story = storyService.GetItem(itemId);
+            CommentDto comment = commentService.GetItem(itemId);
 
-            Assert.AreEqual(story.Type.ToLower(), "story");
-        }
-
-        [Test]
-        public void TopStoriesCountMatch()
-        {
-            int assetCount = 8;
-            int count = storyService.TopStories(assetCount).Count();
-            Assert.AreEqual(count, assetCount);
+            Assert.AreEqual(comment.Type.ToLower(), "comment");
         }
     }
+
 }
